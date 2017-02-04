@@ -1,0 +1,68 @@
+---
+version: "2"
+services:
+  gateway:
+    image: gateway
+    ports:
+    - 8080:8080
+    links:
+    - tokenizer
+    - addition
+    - subtraction
+    - multiplication
+    - division
+    environment:
+    - GATEWAY_TOKENIZERSERVICE=http://tokenizer:8086/tokenize
+    - GATEWAY_ADDITIONSERVICE=http://addition:8082/operate
+    - GATEWAY_SUBTRACTIONSERVICE=http://subtraction:8083/operate
+    - GATEWAY_MULTIPLICATIONSERVICE=http://multiplication:8084/operate
+    - GATEWAY_DIVISIONSERVICE=http://division:8085/operate
+    command:
+    - /a.out
+    - -v=6
+    - -logtostderr
+  tokenizer:
+    image: tokenizer
+    ports:
+    - 8086:8086
+    command:
+    - /a.out
+    - -v=6
+    - -logtostderr
+    - -port=8086
+  addition:
+    image: addition-operator
+    ports:
+    - 8082:8082
+    command:
+    - /a.out
+    - -v=6
+    - -logtostderr
+    - -port=8082
+  subtraction:
+    image: subtraction-operator
+    ports:
+    - 8083:8083
+    command:
+    - /a.out
+    - -v=6
+    - -logtostderr
+    - -port=8083
+  multiplication:
+    image: multiplication-operator
+    ports:
+    - 8084:8084
+    command:
+    - /a.out
+    - -v=6
+    - -logtostderr
+    - -port=8084
+  division:
+    image: division-operator
+    ports:
+    - 8085:8085
+    command:
+    - /a.out
+    - -v=6
+    - -logtostderr
+    - -port=8085
