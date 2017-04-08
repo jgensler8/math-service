@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: division
+  namespace: team5
+  labels:
+    app: division
+spec:
+  ports:
+  - port: 80
+    targetPort: operate
+    protocol: TCP
+  selector:
+    app: division

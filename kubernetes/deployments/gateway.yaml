@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: team0
+spec:
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+      - name: gateway
+        image: jgensl2/gateway:v0.1.0
+        ports:
+        - name: compute
+          containerPort: 8080
+        command:
+        - /a.out
+        - -v=6
+        - -logtostderr
+        - -port=8080
+        env:
+        - name: GATEWAY_TOKENIZERSERVICE
+          value: http://tokenizer.team1:80/tokenize
+        - name: GATEWAY_ADDITIONSERVICE
+          value: http://addition.team2:80/operate
+        - name: GATEWAY_SUBTRACTIONSERVICE
+          value: http://subtraction.team3:80/operate
+        - name: GATEWAY_MULTIPLICATIONSERVICE
+          value: http://multiplication.team4:80/operate
+        - name: GATEWAY_DIVISIONSERVICE
+          value: http://division.team5:80/operate

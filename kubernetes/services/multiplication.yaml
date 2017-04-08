@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multiplication
+  namespace: team4
+  labels:
+    app: multiplication
+spec:
+  ports:
+  - port: 80
+    targetPort: operate
+    protocol: TCP
+  selector:
+    app: multiplication

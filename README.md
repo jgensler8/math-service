@@ -23,3 +23,11 @@ This following will build 6 Dockerfiles
 ```
 ./build-services.sh
 ```
+
+## Testing
+
+[This link](https://www.w3schools.com/tags/ref_urlencode.asp) will help with URL encoding your requests.
+
+```
+curl "http://172.17.4.101:32111/compute?equation=22%2B99"
+```

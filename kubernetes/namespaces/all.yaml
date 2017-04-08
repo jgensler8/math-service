@@ -1,0 +1,42 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: team0
+  labels:
+    name: gateway
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: team1
+  labels:
+    name: tokenizer
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: team2
+  labels:
+    name: addition
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: team3
+  labels:
+    name: subtraction
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: team4
+  labels:
+    name: multiplication
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: team5
+  labels:
+    name: division

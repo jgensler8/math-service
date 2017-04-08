@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: division
+  namespace: team5
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: division
+    spec:
+      containers:
+      - name: division
+        image: jgensl2/division-operator:v0.1.0
+        ports:
+        - name: operate
+          containerPort: 8085
+        command:
+        - /a.out
+        - -v=6
+        - -logtostderr
+        - -port=8085

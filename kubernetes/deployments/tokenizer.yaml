@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tokenizer
+  namespace: team1
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: tokenizer
+    spec:
+      containers:
+      - name: tokenizer
+        image: jgensl2/tokenizer:v0.1.0
+        ports:
+        - name: tokenize
+          containerPort: 8086
+        command:
+        - /a.out
+        - -v=6
+        - -logtostderr
+        - -port=8086

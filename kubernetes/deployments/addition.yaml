@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: addition
+  namespace: team2
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: addition
+    spec:
+      containers:
+      - name: addition
+        image: jgensl2/addition-operator:v0.1.0
+        ports:
+        - name: operate
+          containerPort: 8082
+        command:
+        - /a.out
+        - -v=6
+        - -logtostderr
+        - -port=8082

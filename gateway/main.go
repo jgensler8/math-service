@@ -125,7 +125,7 @@ func handleCompute(w http.ResponseWriter, r *http.Request) {
     }
   }
   glog.V(4).Infof("%d", last.Value)
-  w.Write([]byte(string(last.Value)))
+  w.Write([]byte(strconv.Itoa(last.Value)))
 }
 
 func main() {
