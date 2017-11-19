@@ -1,8 +1,9 @@
 package main
 
 import (
+  "encoding/json"
   "github.com/jgensler8/math-service/shared"
-  service "github.com/jgensler8/math-service/generic-service"
+  "github.com/eawsy/aws-lambda-go-core/service/lambda/runtime"
 )
 
 type additionOperator struct {
@@ -15,10 +16,12 @@ func (a additionOperator) Operate( x shared.Argument, y shared.Argument) (shared
 
 // AdditionOperator is a global Operator for addition
 var AdditionOperator = additionOperator{}
+var AdditionLambda func(evt json.RawMessage, ctx *runtime.Context)(shared.LambdaProxyResponseFormat, error)
 
-func main() {
-  service.GenericServiceBuilder.
-    AddHandler("/operate", shared.GenerateHandler(AdditionOperator)).
-    Build().
-    Serve()
+func init() {
+  AdditionLambda = shared.GenerateEawsyLambdaHandler(AdditionOperator)
+}
+
+func Handle(evt json.RawMessage, ctx *runtime.Context) (shared.LambdaProxyResponseFormat, error) {
+  return AdditionLambda(evt, ctx)
 }

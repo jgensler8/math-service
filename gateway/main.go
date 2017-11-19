@@ -46,7 +46,7 @@ func serviceRequest(u url.URL, i interface{}) (err error) {
   glog.V(4).Infof("Sending Request to Service (%s)", u.String())
   resp, err := http.Get(u.String())
   if err != nil {
-    glog.Errorf("Couldn't reach Service")
+    glog.Errorf("Couldn't reach Service: %s", err.Error())
     return
   }
 

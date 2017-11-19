@@ -5,8 +5,9 @@ SCRIPT_ROOT=$(dirname $0)
 BUILD_DIR=${SCRIPT_ROOT}/docker
 
 docker_prefix="jgensl2/"
-docker_version="v0.1.1"
-SERVICES="gateway tokenizer addition-operator subtraction-operator multiplication-operator division-operator"
+docker_version="v0.1.3"
+# SERVICES="gateway tokenizer addition-operator subtraction-operator multiplication-operator division-operator"
+SERVICES="gateway tokenizer subtraction-operator multiplication-operator division-operator"
 
 for service in ${SERVICES} ; do
   echo "${service}"
